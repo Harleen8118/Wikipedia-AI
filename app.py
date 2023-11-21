@@ -25,3 +25,4 @@ def retrieve_info(query):
     print(page_contents_array)
 
     return page_contents_array
+    
