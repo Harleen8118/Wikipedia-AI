@@ -25,4 +25,32 @@ def retrieve_info(query):
     print(page_contents_array)
 
     return page_contents_array
+
+# 3. Setup LLMChain & prompts
+
+llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k-0613")
+
+template = """
+Assistant, I'm going to provide you with a question and some content. Your task is to find the answer to the question within the given content and rephrase it for better understanding. However, you must keep the meaning of the answer the same and ensure that the length does not exceed the length of the content. Here are the details:
+
+Question: {question}
+
+Content: {content}
+
+Your goal is to provide me with the best answer that I should send to the prospect based on the content provided. Remember to follow these rules:
+
+1) Find the answer within the content and rephrase it for better understanding.
+2) Keep the meaning of the answer the same.
+3) Ensure that the length of the answer does not exceed the length of the content.
+4) Give Prescise and Concise answers.
+5) Do not give answers that are not relevant to the question. If the ontent is not relevant to the question, please write "I don't know".
+
+Please provide a clear and concise response.
+"""
+prompt = PromptTemplate(
+    input_variables=["question", "content"],
+    template=template
+)
+
+chain = LLMChain(llm=llm, prompt=prompt)
     
