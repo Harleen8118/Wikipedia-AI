@@ -53,4 +53,9 @@ prompt = PromptTemplate(
 )
 
 chain = LLMChain(llm=llm, prompt=prompt)
-    
+
+# 4. Retrieval augmented generation
+def generate_response(question):
+    content = retrieve_info(question)
+    response = chain.run(question=question, content=content)
+    return response
