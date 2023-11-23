@@ -59,3 +59,22 @@ def generate_response(question):
     content = retrieve_info(question)
     response = chain.run(question=question, content=content)
     return response
+    
+# 5. Build an app with streamlit
+def main():
+    st.set_page_config(
+        page_title="Answer generator", page_icon=":bird:")
+
+    st.header("Answer generator :bird:")
+    question = st.text_area("Question")
+
+    if question:
+        st.write("Generating best practice question...")
+
+        result = generate_response(question)
+
+        st.info(result)
+
+
+if __name__ == '__main__':
+    main()
