@@ -2,13 +2,13 @@
 
 # From Text to Meaning: Knowledge-Based Embeddings and RAG
 
-A project exploring **Retrieval-Augmented Generation (RAG)** using knowledge embeddings, LangChain, and GPT-3.5, turning raw Wikipedia text into a context-aware, intelligent Q&A system.
+A project exploring **Retrieval-Augmented Generation (RAG)** using knowledge embeddings, LangChain, and GPT-3.5 — turning raw Wikipedia text into a context-aware, intelligent Q&A system.
 
 ---
 
 ## Overview
 
-This project demonstrates how to supercharge a Large Language Model (LLM) with external, factual knowledge using RAG. Instead of relying solely on what GPT-3.5 was trained on, this system retrieves relevant information from a custom knowledge base at query time, giving the model long-term, accurate, and domain-specific context.
+This project demonstrates how to supercharge a Large Language Model (LLM) with external, factual knowledge using RAG. Instead of relying solely on what GPT-3.5 was trained on, this system retrieves relevant information from a custom knowledge base at query time — giving the model long-term, accurate, and domain-specific context.
 
 ---
 
@@ -27,9 +27,9 @@ User Question
 [GPT-3.5 via LangChain] ──► Contextual, Accurate Response
 ```
 
-1. **Vectorize the Knowledge** -> Wikipedia's AI-related pages are chunked and converted into numerical embeddings.
-2. **Semantic Search** -> When a user asks a question, the query is embedded and matched against the knowledge base to retrieve the most relevant snippets.
-3. **Augmented Generation** -> The retrieved snippets are passed alongside the question to GPT-3.5, which generates a grounded, context-aware response.
+1. **Vectorize the Knowledge** — Wikipedia's AI-related pages are chunked and converted into numerical embeddings.
+2. **Semantic Search** — When a user asks a question, the query is embedded and matched against the knowledge base to retrieve the most relevant snippets.
+3. **Augmented Generation** — The retrieved snippets are passed alongside the question to GPT-3.5, which generates a grounded, context-aware response.
 
 ---
 
@@ -40,6 +40,7 @@ User Question
 | Orchestration | [LangChain](https://www.langchain.com/) |
 | LLM | OpenAI GPT-3.5 |
 | Embeddings | OpenAI Embeddings API |
+| Vector Database | [FAISS](https://faiss.ai/) |
 | Knowledge Source | Wikipedia (AI-related pages) |
 
 ---
@@ -58,7 +59,7 @@ User Question
 ### Prerequisites
 
 ```bash
-pip install langchain openai 
+pip install langchain openai wikipedia faiss-cpu
 ```
 
 ### Environment Variables
@@ -72,11 +73,3 @@ OPENAI_API_KEY=your_openai_api_key_here
 ```bash
 python main.py
 ```
-
-
-## What's Next?
-
-- Swap Wikipedia for a custom document corpus
-- Experiment with open-source embedding models (e.g., `sentence-transformers`)
-- Add a persistent vector store (e.g., Pinecone, FAISS, Chroma)
-- Build a simple chat UI on top of the pipeline
